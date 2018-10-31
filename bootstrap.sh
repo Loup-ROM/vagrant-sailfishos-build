@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# ############################### #
-# SET YOUR DEVICE AND VENDOR HERE #
-# ############################### #
-VENDOR="xiaomi"
-DEVICE="santoni"
-
 # Format second disk for persistent storage
 dev='/dev/sdc'
 sudo umount "$dev"
@@ -29,8 +23,8 @@ cat <<'EOF' > $HOME/.hadk.env
 export HADK_ROOT="/mnt/develop" 
 export PLATFORM_SDK_ROOT="$HADK_ROOT/mer" 
 export ANDROID_ROOT="$HADK_ROOT/hadk" 
-export VENDOR="$VENDOR"
-export DEVICE="$DEVICE"
+export VENDOR="xiaomi"
+export DEVICE="santoni"
 # ARCH conflicts with kernel build 
 export PORT_ARCH="armv7hl"
 EOF
