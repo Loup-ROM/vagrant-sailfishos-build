@@ -54,7 +54,7 @@ Vagrant.configure("2") do |config|
      # vb.gui = true
   
      # Customize the amount of memory on the VM:
-     vb.memory = 4144
+     vb.memory = 5000
      vb.cpus = 4
      vb.customize ["modifyvm", :id, "--nictype1", "virtio"]
      vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
@@ -67,7 +67,7 @@ Vagrant.configure("2") do |config|
 
      # Create and attach disk
      unless File.exist?(second_disk)
-       vb.customize ['createhd', '--filename', second_disk, '--format', 'VDI', '--size', 30 * 1024]
+       vb.customize ['createhd', '--filename', second_disk, '--format', 'VDI', '--size', 60 * 1024]
      end
 
      vb.customize ["storageattach", :id, "--storagectl", "SCSI", "--port", 2, "--device", 0, "--type", "hdd", "--medium", second_disk]
