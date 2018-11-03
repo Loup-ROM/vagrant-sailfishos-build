@@ -22,7 +22,7 @@ export DEVICE="santoni"
 export PORT_ARCH="armv7hl"
 ```
 
-Locate these lines inside the Vagrantfile to change how much Cores and RAM the VM will use.
+Locate these lines inside the Vagrantfile to change how many Cores and RAM the VM will use.
 
 ```bash
 vb.memory = 5000
