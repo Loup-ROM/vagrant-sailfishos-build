@@ -27,7 +27,7 @@ export HADK_ROOT="$HOME/sfos"
 cat <<EOF > $HOME/.hadk.env
 export HADK_ROOT="/home/vagrant/sfos" 
 export PLATFORM_SDK_ROOT="\$HADK_ROOT/mer" 
-export ANDROID_ROOT="\$HADK_ROOT/hadk" 
+export ANDROID_ROOT="\$HADK_ROOT/android" 
 export VENDOR="$VENDOR"
 export DEVICE="$DEVICE"
 # ARCH conflicts with kernel build 
@@ -74,7 +74,13 @@ runuser -l vagrant -c "printf 'sdk-assistant create ${VENDOR}-${DEVICE}-${PORT_A
 echo "##### Installing Ubuntu Chroot"
 runuser -l vagrant -c "printf 'curl -s -O https://releases.sailfishos.org/ubu/ubuntu-trusty-20180613-android-rootfs.tar.bz2 && sudo mkdir -p /home/vagrant/sfos/mer/sdks/ubuntu && sudo tar --numeric-owner -xjf ubuntu-trusty-20180613-android-rootfs.tar.bz2 -C /home/vagrant/sfos/mer/sdks/ubuntu && exit' | /home/vagrant/sfos/mer/sdks/sfossdk/mer-sdk-chroot"
 
-# Fixing missing keys
+# Fixing android paths
+sudo mkdir -p /home/vagrant/sfos/android
+sudo chown -R vagrant /home/vagrant/sfos/android
+runuser -l vagrant -c "printf 'sudo ln -s /parentroot/home/vagrant/sfos/android /home/vagrant/sfos/android && sudo chown -R vagrant /home/vagrant/sfos/android && exit' | /home/vagrant/sfos/mer/sdks/sfossdk/mer-sdk-chroot"
 
+# Fixing missing keys
+# sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com A1715D88E1DF1F24
+# sudo apt-get install imagemagick
 # Installing repo utils
 
